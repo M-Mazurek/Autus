@@ -68,7 +68,7 @@ namespace Autus
 
         public static Offer[] GetOffers()
         {
-            return GetOffers(GetDefaultPriceRange(), GetDefaultProdYearRange(), GetDefaultMileageRange(), GetBrands(), GetDefaultStateFilter(), GetDefaultBodyTypeFilter(), 2);
+            return GetOffers(GetDefaultPriceRange(), GetDefaultProdYearRange(), GetDefaultMileageRange(), GetBrands(), GetDefaultStateFilter(), GetDefaultBodyTypeFilter(), GetDefaultFuelTypeFilter());
         }
 
         public static Offer[] GetOffers((float, float) price, (int, int) prodYear, (float, float) mileage, string[] brands, int state, int bodyType, int fuelType)

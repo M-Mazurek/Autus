@@ -29,16 +29,17 @@ namespace Autus
 
     public static class Global
     {
-        readonly static SqlConnection _conn;
+        readonly static string DIR;
+        readonly static SqlConnection CONN;
 
-        public record Offer(string Author, string Title, string Desc, float Price, int ProdYear, float Mileage, string Brand, STATE State, BODY_TYPE BodyType, FUEL_TYPE FuelType);
+        public record Offer(int Id, string Author, string Title, string Desc, float Price, int ProdYear, float Mileage, string Brand, STATE State, BODY_TYPE BodyType, FUEL_TYPE FuelType);
 
         public static string User { get; private set; } = "user1";
 
         public static int AddOffer(string title, string desc, float price, int prodYear, float mileage, string brand, STATE state, BODY_TYPE bodyType, FUEL_TYPE fuelType)
         {
             string cmdTxt = "INSERT INTO offers (author, title, [desc], price, prod_year, mileage, brand, state, body_type, fuel_type) VALUES (@author, @title, @desc, @price, @prod_year, @mileage, @brand, @state, @body_type, @fuel_type)";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@author", System.Data.SqlDbType.VarChar, 20);
             cmd.Parameters.Add("@title", System.Data.SqlDbType.VarChar, 50);
@@ -89,7 +90,7 @@ namespace Autus
                             " AND @state & state > 0" +
                             " AND @body_type & body_type > 0" + 
                             " AND @fuel_type & fuel_type > 0";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
             cmd.Parameters.Add("@_price", System.Data.SqlDbType.Float);
@@ -120,7 +121,8 @@ namespace Autus
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                offers.Add(new(reader["author"].ToString()!, 
+                offers.Add(new(Convert.ToInt32(reader["id"]),
+                                    reader["author"].ToString()!, 
                                     reader["title"].ToString()!,
                                     reader["desc"].ToString()!, 
                                     (float)Convert.ToDouble(reader["price"]),
@@ -138,7 +140,7 @@ namespace Autus
         public static void AddUser(string login, string pass)
         {
             string cmdTxt = "INSERT INTO users VALUES (@login, @pass)";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
             cmd.Parameters.Add("@pass", System.Data.SqlDbType.VarChar, 20);
@@ -152,7 +154,7 @@ namespace Autus
         public static bool HasUser(string login)
         {
             string cmdTxt = "SELECT COUNT(login) FROM users WHERE login = @login";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
 
@@ -167,7 +169,7 @@ namespace Autus
             (float, float) res = default;
 
             string cmdTxt = "SELECT MIN(price), MAX(price) FROM offers";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -187,7 +189,7 @@ namespace Autus
             (int, int) res = default;
 
             string cmdTxt = "SELECT MIN(prod_year), MAX(prod_year) FROM offers";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
@@ -206,7 +208,7 @@ namespace Autus
             (float, float) res = default;
 
             string cmdTxt = "SELECT MIN(mileage), MAX(mileage) FROM offers";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
@@ -225,7 +227,7 @@ namespace Autus
             List<string> res = new();
 
             string cmdTxt = "SELECT DISTINCT(brand) FROM offers";
-            SqlCommand cmd = new(cmdTxt, _conn);
+            SqlCommand cmd = new(cmdTxt, CONN);
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -241,13 +243,40 @@ namespace Autus
         public static int GetDefaultBodyTypeFilter() => Enum.GetValues(typeof(BODY_TYPE)).Cast<int>().Last() * 2 - 1;
         public static int GetDefaultFuelTypeFilter() => Enum.GetValues(typeof(FUEL_TYPE)).Cast<int>().Last() * 2 - 1;
         #endregion
+
+        public static void ConvertToImageSlider(this PictureBox box, int offerId)
+        {
+            box.Image = Image.FromFile(Path.Combine(DIR, "imgs", offerId + "_0.png"));
+            box.Tag = 0;
+            box.MouseClick += (s, e) =>
+            {
+                PictureBox p = (PictureBox)s!;
+                switch (MathF.Floor((float)e.X * 3 / p.Width))
+                {
+                    case 0:
+                        if ((int)p.Tag == 0)
+                            return;
+                        p.Tag = ((int)p.Tag) - 1;
+                        p.Image = Image.FromFile(Path.Combine(DIR, "imgs", $"{offerId}_{p.Tag}.png"));
+                        break;
+                    case 2:
+                        if (!File.Exists(Path.Combine(DIR, DIR, "imgs", $"{offerId}_{(int)p.Tag + 1}.png")))
+                            return;
+                        p.Tag = ((int)p.Tag) + 1;
+                        p.Image = Image.FromFile(Path.Combine(DIR, "imgs", $"{offerId}_{p.Tag}.png"));
+                        break;
+                }
+            };
+        }
+
         static Global()
         {
-            string dbPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName, "Database.mdf");
+            DIR = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
+            string dbPath = Path.Combine(DIR, "Database.mdf");
             string connStr = @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True";
 
-            _conn = new(connStr);
-            _conn.Open();
+            CONN = new(connStr);
+            CONN.Open();
         }
     }
 }

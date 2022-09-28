@@ -11,6 +11,8 @@ namespace Autus
             //Global.AddOffer("Test2", "Hmm", 10250, 2003, 100987, "Audi", Global.STATE.USED, Global.BODY_TYPE.SEDAN, Global.FUEL_TYPE.DIESEL);
             //Global.AddUser("pog", "hmm");
 
+            pictureBox1.ConvertToImageSlider(9);
+
             textBox1.Text = Global.GetDefaultPriceRange().ToString();
             textBox2.Text = Global.GetDefaultProdYearRange().ToString();
             textBox3.Text = Global.GetDefaultMileageRange().ToString();

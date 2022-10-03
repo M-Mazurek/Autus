@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -244,14 +245,76 @@ namespace Autus
         public static int GetDefaultFuelTypeFilter() => Enum.GetValues(typeof(FUEL_TYPE)).Cast<int>().Last() * 2 - 1;
         #endregion
 
+        public static void ConvertToOfferImage(this PictureBox box, int offerId) =>
+            box.Image = Image.FromFile(Path.Combine(DIR, "imgs", offerId + "_0.png"));
+
+        private static void DrawArrows(object? s, MouseEventArgs e)
+        {
+            PictureBox p = (PictureBox)s!;
+            var graphics = p.CreateGraphics();
+            Pen pen = new(Color.FromArgb(155, 255, 255, 255), 2);
+            const int segments = 7;
+            const int rectSegments = 5;
+            const int rectA = 25;
+            Vector2 origin = new(p.Width / segments / 2, p.Height / 2);
+            float arrowSize = p.Width / segments / 4;
+            Vector2 arrowVecX = new(arrowSize, 0f);
+            Vector2 arrowVecY = new(0f, arrowSize);
+
+            switch (MathF.Floor((float)e.X * segments / p.Width))
+            {
+                case 0:
+                    if (p.AccessibleName == "L")
+                        return;
+                    for (int i = 1; i <= rectSegments; i++)
+                        graphics.FillRectangle(new SolidBrush(Color.FromArgb(rectA, Color.Black)),
+                                               0f,
+                                               0f,
+                                               i * p.Width / rectSegments / segments,
+                                               p.Height);
+                    //MessageBox.Show(origin.ToString());
+                    graphics.DrawLines(pen, new PointF[]
+                    {
+                            new(origin - arrowVecY),
+                            new(origin - arrowVecX),
+                            new(origin + arrowVecY)
+                    });
+                    p.AccessibleName = "L";
+                    break;
+                case 6:
+                    if (p.AccessibleName == "R")
+                        return;
+                    for (int i = 1; i <= rectSegments; i++)
+                        graphics.FillRectangle(new SolidBrush(Color.FromArgb(rectA, Color.Black)),
+                                               p.Width - (i * p.Width / rectSegments / segments),
+                                               0f,
+                                               i * p.Width / rectSegments / segments,
+                                               p.Height);
+                    origin = new Vector2(p.Width, p.Height) - origin;
+                    //MessageBox.Show(origin.ToString() + " " + p.Width + " " + p.Height);
+                    graphics.DrawLines(pen, new PointF[]
+                    {
+                            new(origin - arrowVecY),
+                            new(origin + arrowVecX),
+                            new(origin + arrowVecY)
+                    });
+                    p.AccessibleName = "R";
+                    break;
+                default:
+                    p.AccessibleName = "N";
+                    p.Invalidate();
+                    break;
+            }
+        }
+
         public static void ConvertToImageSlider(this PictureBox box, int offerId)
         {
-            box.Image = Image.FromFile(Path.Combine(DIR, "imgs", offerId + "_0.png"));
+            box.ConvertToOfferImage(offerId);
             box.Tag = 0;
             box.MouseClick += (s, e) =>
             {
                 PictureBox p = (PictureBox)s!;
-                switch (MathF.Floor((float)e.X * 3 / p.Width))
+                switch (MathF.Floor((float)e.X * 7 / p.Width))
                 {
                     case 0:
                         if ((int)p.Tag == 0)
@@ -259,13 +322,21 @@ namespace Autus
                         p.Tag = ((int)p.Tag) - 1;
                         p.Image = Image.FromFile(Path.Combine(DIR, "imgs", $"{offerId}_{p.Tag}.png"));
                         break;
-                    case 2:
+                    case 6:
                         if (!File.Exists(Path.Combine(DIR, DIR, "imgs", $"{offerId}_{(int)p.Tag + 1}.png")))
                             return;
                         p.Tag = ((int)p.Tag) + 1;
                         p.Image = Image.FromFile(Path.Combine(DIR, "imgs", $"{offerId}_{p.Tag}.png"));
                         break;
                 }
+                box.AccessibleName = "N";
+                DrawArrows(box, e);
+            };
+            box.MouseMove += DrawArrows;
+            box.MouseLeave += (s, e) =>
+            {
+                ((Control)s!).AccessibleName = "N";
+                ((Control)s!).Invalidate();
             };
         }
 

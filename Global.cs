@@ -418,7 +418,7 @@ namespace Autus
         {
             DIR = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
             string dbPath = Path.Combine(DIR, "Database.mdf");
-            string connStr = @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True";
+            string connStr = @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};User ID=user;Password=pass;Trusted_Connection=True;";
 
             CONN = new(connStr);
             CONN.Open();

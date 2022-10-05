@@ -26,7 +26,7 @@ namespace Autus {
             // sprawdzanie loginu, hasła, czy jest w bazie itp.
 
             if (String.IsNullOrEmpty(txtPassword.Text))
-                return; // dialog o braku hasla?
+                new LoginErrorDialog().ShowDialog();
 
             if (Global.HasUser(txtLogin.Text))
             {

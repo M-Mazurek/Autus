@@ -120,12 +120,12 @@ namespace Autus
             List<Offer> offers = new();
             string brandsArg = brands.Length == 0 ? "" : new Func<string>(() => 
             {
-                string res = " AND ";
+                string res = " AND (";
                 for (int i = 0; i < brands.Length; i++)
                 {
                     res += $"brand = @brand{i} OR ";
                 }
-                return res.Remove(res.Length - 4);
+                return res.Remove(res.Length - 4) + ")";
             })();
             string cmdTxt = "SELECT * FROM offers WHERE price BETWEEN @price AND @_price" + 
                             " AND prod_year BETWEEN @prod_year AND @_prod_year" + 
@@ -134,6 +134,7 @@ namespace Autus
                             " AND (@state & state) > 0" +
                             " AND (@body_type & body_type) > 0" + 
                             " AND (@fuel_type & fuel_type) > 0";
+            MessageBox.Show(cmdTxt);
             SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
@@ -176,8 +177,6 @@ namespace Autus
                                     (STATE)Convert.ToInt64(reader["state"]),
                                     (BODY_TYPE)Convert.ToInt64(reader["body_type"]),
                                     (FUEL_TYPE)Convert.ToInt64(reader["fuel_type"])));
-
-                MessageBox.Show($"{state}, {(STATE)Convert.ToInt64(reader["state"])}");
             }
             reader.Close();
             return offers.ToArray();

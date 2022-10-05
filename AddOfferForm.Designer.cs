@@ -85,6 +85,7 @@
             // 
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.ForeColor = System.Drawing.Color.White;
             this.txtName.Location = new System.Drawing.Point(35, 116);
             this.txtName.MaxLength = 80;
             this.txtName.Multiline = true;
@@ -98,6 +99,7 @@
             // 
             this.txtCar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCar.ForeColor = System.Drawing.Color.White;
             this.txtCar.Location = new System.Drawing.Point(709, 218);
             this.txtCar.MaxLength = 80;
             this.txtCar.Multiline = true;
@@ -111,6 +113,7 @@
             // 
             this.txtMileage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtMileage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMileage.ForeColor = System.Drawing.Color.White;
             this.txtMileage.Location = new System.Drawing.Point(709, 313);
             this.txtMileage.MaxLength = 80;
             this.txtMileage.Multiline = true;
@@ -124,6 +127,7 @@
             // 
             this.txtProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProd.ForeColor = System.Drawing.Color.White;
             this.txtProd.Location = new System.Drawing.Point(709, 414);
             this.txtProd.MaxLength = 80;
             this.txtProd.Multiline = true;
@@ -137,6 +141,7 @@
             // 
             this.txtPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.ForeColor = System.Drawing.Color.White;
             this.txtPrice.Location = new System.Drawing.Point(1042, 506);
             this.txtPrice.MaxLength = 80;
             this.txtPrice.Multiline = true;
@@ -150,6 +155,7 @@
             // 
             this.txtDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDesc.ForeColor = System.Drawing.Color.White;
             this.txtDesc.Location = new System.Drawing.Point(35, 218);
             this.txtDesc.MaxLength = 80;
             this.txtDesc.Multiline = true;

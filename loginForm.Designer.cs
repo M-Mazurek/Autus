@@ -50,10 +50,9 @@
             this.txtPassword.ForeColor = System.Drawing.Color.White;
             this.txtPassword.Location = new System.Drawing.Point(475, 373);
             this.txtPassword.MaxLength = 24;
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PlaceholderText = "Hasło";
-            this.txtPassword.Size = new System.Drawing.Size(438, 49);
+            this.txtPassword.Size = new System.Drawing.Size(438, 29);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -64,10 +63,9 @@
             this.txtLogin.ForeColor = System.Drawing.Color.White;
             this.txtLogin.Location = new System.Drawing.Point(475, 302);
             this.txtLogin.MaxLength = 24;
-            this.txtLogin.Multiline = true;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.PlaceholderText = "Login";
-            this.txtLogin.Size = new System.Drawing.Size(438, 49);
+            this.txtLogin.Size = new System.Drawing.Size(438, 29);
             this.txtLogin.TabIndex = 0;
             this.txtLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

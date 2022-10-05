@@ -131,9 +131,9 @@ namespace Autus
                             " AND prod_year BETWEEN @prod_year AND @_prod_year" + 
                             " AND mileage BETWEEN @mileage AND @_mileage" + 
                             brandsArg +
-                            " AND @state & state > 0" +
-                            " AND @body_type & body_type > 0" + 
-                            " AND @fuel_type & fuel_type > 0";
+                            " AND (@state & state) > 0" +
+                            " AND (@body_type & body_type) > 0" + 
+                            " AND (@fuel_type & fuel_type) > 0";
             SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
@@ -142,9 +142,9 @@ namespace Autus
             cmd.Parameters.Add("@_prod_year", System.Data.SqlDbType.SmallInt);
             cmd.Parameters.Add("@mileage", System.Data.SqlDbType.Float);
             cmd.Parameters.Add("@_mileage", System.Data.SqlDbType.Float);
-            cmd.Parameters.Add("@state", System.Data.SqlDbType.TinyInt);
-            cmd.Parameters.Add("@body_type", System.Data.SqlDbType.TinyInt);
-            cmd.Parameters.Add("@fuel_type", System.Data.SqlDbType.TinyInt);
+            cmd.Parameters.Add("@state", System.Data.SqlDbType.BigInt);
+            cmd.Parameters.Add("@body_type", System.Data.SqlDbType.BigInt);
+            cmd.Parameters.Add("@fuel_type", System.Data.SqlDbType.BigInt);
 
             cmd.Parameters["@price"].Value = price.Item1;
             cmd.Parameters["@_price"].Value = price.Item2;
@@ -173,9 +173,11 @@ namespace Autus
                                     Convert.ToInt32(reader["prod_year"]),
                                     (float)Convert.ToDouble(reader["mileage"]),
                                     reader["brand"].ToString()!,
-                                    (STATE)Convert.ToInt32(reader["state"]),
-                                    (BODY_TYPE)Convert.ToInt32(reader["body_type"]),
-                                    (FUEL_TYPE)Convert.ToInt32(reader["fuel_type"])));
+                                    (STATE)Convert.ToInt64(reader["state"]),
+                                    (BODY_TYPE)Convert.ToInt64(reader["body_type"]),
+                                    (FUEL_TYPE)Convert.ToInt64(reader["fuel_type"])));
+
+                MessageBox.Show($"{state}, {(STATE)Convert.ToInt64(reader["state"])}");
             }
             reader.Close();
             return offers.ToArray();
@@ -418,7 +420,7 @@ namespace Autus
         {
             DIR = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
             string dbPath = Path.Combine(DIR, "Database.mdf");
-            string connStr = @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};User ID=user;Password=pass;Trusted_Connection=True;";
+            string connStr = @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};User ID=ni4;Password=g3r;Trusted_Connection=True;";
 
             CONN = new(connStr);
             CONN.Open();

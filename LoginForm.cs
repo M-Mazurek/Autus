@@ -30,7 +30,8 @@ namespace Autus {
 
             if (Global.HasUser(txtLogin.Text))
             {
-                Global.SignIn(txtLogin.Text, txtPassword.Text);
+                if (!Global.SignIn(txtLogin.Text, txtPassword.Text))
+                    return;
                 SignIn();
             }
             else

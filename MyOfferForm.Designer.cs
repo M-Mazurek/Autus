@@ -224,6 +224,7 @@
             this.pictures.Location = new System.Drawing.Point(19, 97);
             this.pictures.Name = "pictures";
             this.pictures.Size = new System.Drawing.Size(657, 387);
+            this.pictures.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictures.TabIndex = 20;
             this.pictures.TabStop = false;
             // 

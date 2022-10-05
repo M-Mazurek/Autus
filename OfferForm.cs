@@ -30,6 +30,7 @@ namespace Autus {
             lblType.Text = $"Typ samochodu: {_offer.BodyType}";
             lblDesc.Text = _offer.Desc; // opis
             // chyba wszystko
+            pictures.ConvertToImageSlider(_offer.Id);
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {
@@ -52,10 +53,10 @@ namespace Autus {
 
         // reszta
         private void btnBuy_Click(object sender, EventArgs e) {
-            //delete from database
-
+            Global.RemoveOffer(_offer.Id);
+            this.Hide();
+            new MyAccountForm().ShowDialog();
+            this.Close();
         }
-
-        
     }
 }

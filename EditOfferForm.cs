@@ -49,10 +49,22 @@ namespace Autus {
             this.Close();
         }
 
-
         // reszta 
         private void btnConfirm_Click(object sender, EventArgs e) {
             //update database
+            Global.EditOffer(offer.Id,
+                            txtName.Text,
+                            txtDesc.Text,
+                            float.Parse(txtPrice.Text),
+                            int.Parse(txtProd.Text),
+                            float.Parse(txtMileage.Text),
+                            txtCar.Text,
+                            (STATE)Math.Pow(2, cbState.SelectedIndex),
+                            (BODY_TYPE)Math.Pow(2, cbType.SelectedIndex),
+                            (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            this.Hide();
+            new MyAccountForm().ShowDialog();
+            this.Close();
         }
 
         private void btnAttach_Click(object sender, EventArgs e) {

@@ -30,6 +30,7 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.offers = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbBrand = new System.Windows.Forms.ListBox();
             this.lbFuel = new System.Windows.Forms.ListBox();
             this.lbBody = new System.Windows.Forms.ListBox();
             this.lbState = new System.Windows.Forms.ListBox();
@@ -52,7 +53,6 @@
             this.priceMax = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.priceMin = new System.Windows.Forms.NumericUpDown();
-            this.lbBrand = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrzebiegMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrzebiegMin)).BeginInit();
@@ -160,6 +160,21 @@
             this.panel1.Size = new System.Drawing.Size(264, 601);
             this.panel1.TabIndex = 11;
             // 
+            // lbBrand
+            // 
+            this.lbBrand.FormattingEnabled = true;
+            this.lbBrand.ItemHeight = 15;
+            this.lbBrand.Items.AddRange(new object[] {
+            "Audi",
+            "Fiat",
+            "BMW",
+            "Mercedes"});
+            this.lbBrand.Location = new System.Drawing.Point(5, 170);
+            this.lbBrand.Name = "lbBrand";
+            this.lbBrand.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lbBrand.Size = new System.Drawing.Size(252, 49);
+            this.lbBrand.TabIndex = 29;
+            // 
             // lbFuel
             // 
             this.lbFuel.FormattingEnabled = true;
@@ -167,10 +182,10 @@
             this.lbFuel.Items.AddRange(new object[] {
             "Benzyna",
             "Diesel"});
-            this.lbFuel.Location = new System.Drawing.Point(5, 380);
+            this.lbFuel.Location = new System.Drawing.Point(5, 395);
             this.lbFuel.Name = "lbFuel";
             this.lbFuel.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lbFuel.Size = new System.Drawing.Size(252, 34);
+            this.lbFuel.Size = new System.Drawing.Size(252, 49);
             this.lbFuel.TabIndex = 28;
             // 
             // lbBody
@@ -181,7 +196,7 @@
             "Hatchback",
             "SUV",
             "Sedan"});
-            this.lbBody.Location = new System.Drawing.Point(5, 305);
+            this.lbBody.Location = new System.Drawing.Point(5, 320);
             this.lbBody.Name = "lbBody";
             this.lbBody.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lbBody.Size = new System.Drawing.Size(252, 49);
@@ -197,7 +212,7 @@
             this.lbState.Location = new System.Drawing.Point(5, 245);
             this.lbState.Name = "lbState";
             this.lbState.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lbState.Size = new System.Drawing.Size(252, 34);
+            this.lbState.Size = new System.Drawing.Size(252, 49);
             this.lbState.TabIndex = 26;
             // 
             // label13
@@ -205,7 +220,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(5, 357);
+            this.label13.Location = new System.Drawing.Point(5, 372);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(103, 20);
             this.label13.TabIndex = 25;
@@ -216,7 +231,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(3, 282);
+            this.label11.Location = new System.Drawing.Point(5, 297);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 20);
             this.label11.TabIndex = 23;
@@ -414,21 +429,6 @@
             this.priceMin.Name = "priceMin";
             this.priceMin.Size = new System.Drawing.Size(90, 23);
             this.priceMin.TabIndex = 2;
-            // 
-            // lbBrand
-            // 
-            this.lbBrand.FormattingEnabled = true;
-            this.lbBrand.ItemHeight = 15;
-            this.lbBrand.Items.AddRange(new object[] {
-            "Audi",
-            "Fiat",
-            "BMW",
-            "Mercedes"});
-            this.lbBrand.Location = new System.Drawing.Point(5, 170);
-            this.lbBrand.Name = "lbBrand";
-            this.lbBrand.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lbBrand.Size = new System.Drawing.Size(252, 49);
-            this.lbBrand.TabIndex = 29;
             // 
             // OffersForm
             // 

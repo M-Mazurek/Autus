@@ -34,16 +34,18 @@ namespace Autus {
 
         // reszta
         private void btnConfirm_Click(object sender, EventArgs e) {
-            //Comboboxy do naprawy
             Global.AddOffer(txtName.Text,
                             txtDesc.Text,
                             float.Parse(txtPrice.Text),
                             int.Parse(txtProd.Text),
                             float.Parse(txtMileage.Text),
                             txtCar.Text,
-                            (STATE)cbState.SelectedValue,
-                            (BODY_TYPE)cbBody.SelectedValue,
-                            (FUEL_TYPE)cbFuel.SelectedValue);
+                            (STATE)Math.Pow(2, cbState.SelectedIndex),
+                            (BODY_TYPE)Math.Pow(2, cbBody.SelectedIndex),
+                            (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            this.Hide();
+            new MyAccountForm().ShowDialog();
+            this.Close();
         }
 
         private void btnAttach_Click(object sender, EventArgs e) {

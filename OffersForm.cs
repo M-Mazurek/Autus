@@ -33,7 +33,7 @@ namespace Autus {
 
                     OfferNumber = OfferNumber,
                     OfferID = o.Id
-            };
+                };
                 OfferPanel.SetOffer(o.Title, o.Desc, o.Price);
 
                 foreach (Control c in OfferPanel.Controls)
@@ -77,45 +77,42 @@ namespace Autus {
             lbBrand.Items.Clear();
             Global.GetBrands().ToList().ForEach(x => lbBrand.Items.Add(x));
 
-            List<EnumTextPair> kysList = new();
+            List<EnumTextPair> stateList = new();
             foreach (var val in Enum.GetValues(typeof(STATE)))
-                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
+                stateList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbState.DisplayMember = "Text";
-            lbState.DataSource = kysList;
-            kysList.Clear();
+            lbState.DataSource = stateList;
 
+            List<EnumTextPair> bodyList = new();
             foreach (var val in Enum.GetValues(typeof(BODY_TYPE)))
-                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
+                bodyList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbBody.DisplayMember = "Text";
-            lbBody.DataSource = kysList;
-            kysList.Clear();
+            lbBody.DataSource = bodyList;
 
+            List<EnumTextPair> fuelList = new();
             foreach (var val in Enum.GetValues(typeof(FUEL_TYPE)))
-                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
+                fuelList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbFuel.DisplayMember = "Text";
-            lbFuel.DataSource = kysList;
+            lbFuel.DataSource = fuelList;
 
-            
+            for (int i = 0; i < lbBrand.Items.Count; i++)
+                lbBrand.SetSelected(i, true);
+
+            for (int i = 0; i < lbState.Items.Count; i++)
+                lbState.SetSelected(i, true);
+
+            for (int i = 0; i < lbBody.Items.Count; i++)
+                lbBody.SetSelected(i, true);
+
+            for (int i = 0; i < lbFuel.Items.Count; i++)
+                lbFuel.SetSelected(i, true);
 
             _offers = Global.GetOffers();
             LoadOffers();
         }
-
-        private void btnAddOffer_Click(object sender, EventArgs e) {
-            this.Hide();
-            new AddOfferForm().ShowDialog();
-            this.Close();
-        }
-
-        private void btnAccount_Click(object sender, EventArgs e) {
-            this.Hide();
-            new MyAccountForm().ShowDialog();
-            this.Close();
-        }
-
         // reszta
         private void btnChange_Click(object sender, EventArgs e) {
             List<string> brands = new List<string>();
@@ -134,8 +131,10 @@ namespace Autus {
             foreach (EnumTextPair selectedItem in lbFuel.SelectedItems)
                 bitFuel += selectedItem.Value;
 
-            //((KYS)lbState.SelectedItem).Value;
+            MessageBox.Show($"State: {bitState}, Body: {bitBody}, Fuel: {bitFuel}");
 
+            //((KYS)lbState.SelectedItem).Value;
+            _offers = Array.Empty<Global.Offer>();
             _offers = Global.GetOffers(((float)priceMin.Value, (float)priceMax.Value),
                                         ((int)ProdukcjaMin.Value, (int)ProdukcjaMax.Value),
                                         ((float)PrzebiegMin.Value, (float)PrzebiegMax.Value),
@@ -145,6 +144,19 @@ namespace Autus {
                                         bitFuel); //custom search
             offers.Controls.Clear();
             LoadOffers();
+        }
+        private void btnAddOffer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new AddOfferForm().ShowDialog();
+            this.Close();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MyAccountForm().ShowDialog();
+            this.Close();
         }
     }
 }

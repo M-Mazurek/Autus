@@ -15,14 +15,28 @@ namespace Autus {
             InitializeComponent();
         }
 
+        private void SignIn() 
+        {
+            Hide();
+            new OffersForm().ShowDialog();
+            Close();
+        }
+
         private void btnLogin_Click(object sender, EventArgs e) {
             // sprawdzanie loginu, hasła, czy jest w bazie itp.
-            if (true) {
-                Hide();
-                new OffersForm().ShowDialog();
-                Close();
-            } else { 
-                // dialog
+
+            if (String.IsNullOrEmpty(txtPassword.Text))
+                return; // dialog o braku hasla?
+
+            if (Global.HasUser(txtLogin.Text))
+            {
+                Global.SignIn(txtLogin.Text, txtPassword.Text);
+                SignIn();
+            }
+            else
+            {
+                Global.AddUser(txtLogin.Text, txtPassword.Text);
+                SignIn();
             }
         }
     }

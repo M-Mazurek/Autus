@@ -10,20 +10,25 @@ using System.Windows.Forms;
 
 namespace Autus {
     public partial class EditOfferForm : Form {
-        public EditOfferForm() {
+        private Global.Offer offer;
+        public EditOfferForm(int offerNumber)
+        {
             InitializeComponent();
+            offer = Global.GetOffers()[offerNumber];
         }
 
         // sterowanie i ustawienie ""pól tekstowych""
         private void EditOfferForm_Load(object sender, EventArgs e) {
-            txtName.Text = null; // nazwa oferty
-            txtMileage.Text = null;
-            txtPrice.Text = null;
-            txtProd.Text = null;
-            txtCar.Text = null;
-            cbState.SelectedIndex = 0;
-            cbFuel.SelectedIndex = 0;
-            cbType.SelectedIndex = 0;
+            txtName.Text = offer.Title; // nazwa oferty
+            txtMileage.Text = offer.Mileage.ToString();
+            txtPrice.Text = offer.Price.ToString();
+            txtProd.Text = offer.ProdYear.ToString();
+            txtCar.Text = offer.Brand;
+            txtDesc.Text = offer.Desc;
+
+            cbState.SelectedIndex = (int)Math.Log2((double)offer.State);
+            cbFuel.SelectedIndex = (int)Math.Log2((double)offer.FuelType);
+            cbType.SelectedIndex = (int)Math.Log2((double)offer.BodyType);
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {
@@ -47,7 +52,7 @@ namespace Autus {
 
         // reszta 
         private void btnConfirm_Click(object sender, EventArgs e) {
-
+            //update database
         }
 
         private void btnAttach_Click(object sender, EventArgs e) {

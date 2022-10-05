@@ -150,6 +150,8 @@ namespace Autus
             cmd.Parameters["@pass"].Value = pass;
 
             cmd.ExecuteNonQuery();
+
+            User = login;
         }
 
         public static bool HasUser(string login)
@@ -162,6 +164,26 @@ namespace Autus
             cmd.Parameters["@login"].Value = login;
 
             return Convert.ToInt32(cmd.ExecuteScalar()) == 1;
+        }
+
+        public static bool SignIn(string login, string password) 
+        {
+            string cmdTxt = "SELECT COUNT(login) FROM users WHERE login = @login AND pass = @password";
+            SqlCommand cmd = new(cmdTxt, CONN);
+
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 20);
+
+            cmd.Parameters["@login"].Value = login;
+            cmd.Parameters["@password"].Value = password;
+
+            if (Convert.ToInt32(cmd.ExecuteScalar()) == 1)
+            {
+                User = login;
+                return true;
+            }
+
+            return false;
         }
 
         #region defaults

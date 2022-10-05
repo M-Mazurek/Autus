@@ -10,7 +10,8 @@ using System.Windows.Forms;
 
 namespace Autus {
     public partial class AddOfferForm : Form {
-        public AddOfferForm() {
+        public AddOfferForm()
+        {
             InitializeComponent();
         }
 
@@ -33,11 +34,20 @@ namespace Autus {
 
         // reszta
         private void btnConfirm_Click(object sender, EventArgs e) {
-
+            //Comboboxy do naprawy
+            Global.AddOffer(txtName.Text,
+                            txtDesc.Text,
+                            float.Parse(txtPrice.Text),
+                            int.Parse(txtProd.Text),
+                            float.Parse(txtMileage.Text),
+                            txtCar.Text,
+                            (STATE)cbState.SelectedValue,
+                            (BODY_TYPE)cbBody.SelectedValue,
+                            (FUEL_TYPE)cbFuel.SelectedValue);
         }
 
         private void btnAttach_Click(object sender, EventArgs e) {
-
+            //idk
         }
 
     }

@@ -28,7 +28,7 @@
             this.cbFuel = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.cbState = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtProd = new System.Windows.Forms.TextBox();
             this.txtMileage = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@
             // 
             this.btnAttach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(41)))), ((int)(((byte)(170)))));
             this.btnAttach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttach.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAttach.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAttach.ForeColor = System.Drawing.Color.White;
             this.btnAttach.Location = new System.Drawing.Point(38, 657);
             this.btnAttach.Name = "btnAttach";
@@ -57,7 +57,7 @@
             // 
             this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(41)))), ((int)(((byte)(170)))));
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirm.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.Location = new System.Drawing.Point(1206, 657);
             this.btnConfirm.Name = "btnConfirm";
@@ -71,7 +71,7 @@
             // 
             this.cbFuel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.cbFuel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFuel.Font = new System.Drawing.Font("Ubuntu", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbFuel.ForeColor = System.Drawing.Color.Gray;
             this.cbFuel.FormattingEnabled = true;
             this.cbFuel.IntegralHeight = false;
@@ -89,7 +89,7 @@
             // 
             this.cbType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbType.Font = new System.Drawing.Font("Ubuntu", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbType.ForeColor = System.Drawing.Color.Gray;
             this.cbType.FormattingEnabled = true;
             this.cbType.IntegralHeight = false;
@@ -108,7 +108,7 @@
             // 
             this.cbState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbState.Font = new System.Drawing.Font("Ubuntu", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbState.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbState.ForeColor = System.Drawing.Color.Gray;
             this.cbState.FormattingEnabled = true;
             this.cbState.IntegralHeight = false;
@@ -122,23 +122,25 @@
             this.cbState.Size = new System.Drawing.Size(301, 37);
             this.cbState.TabIndex = 36;
             // 
-            // textBox1
+            // txtDesc
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.textBox1.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(38, 216);
-            this.textBox1.MaxLength = 80;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Marka samochodu";
-            this.textBox1.Size = new System.Drawing.Size(647, 337);
-            this.textBox1.TabIndex = 35;
-            this.textBox1.WordWrap = false;
+            this.txtDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDesc.ForeColor = System.Drawing.Color.White;
+            this.txtDesc.Location = new System.Drawing.Point(38, 216);
+            this.txtDesc.MaxLength = 80;
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.PlaceholderText = "Opis";
+            this.txtDesc.Size = new System.Drawing.Size(647, 337);
+            this.txtDesc.TabIndex = 35;
+            this.txtDesc.WordWrap = false;
             // 
             // txtPrice
             // 
             this.txtPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtPrice.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.ForeColor = System.Drawing.Color.White;
             this.txtPrice.Location = new System.Drawing.Point(1045, 504);
             this.txtPrice.MaxLength = 80;
             this.txtPrice.Multiline = true;
@@ -151,7 +153,8 @@
             // txtProd
             // 
             this.txtProd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtProd.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProd.ForeColor = System.Drawing.Color.White;
             this.txtProd.Location = new System.Drawing.Point(712, 412);
             this.txtProd.MaxLength = 80;
             this.txtProd.Multiline = true;
@@ -164,7 +167,8 @@
             // txtMileage
             // 
             this.txtMileage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtMileage.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMileage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMileage.ForeColor = System.Drawing.Color.White;
             this.txtMileage.Location = new System.Drawing.Point(712, 311);
             this.txtMileage.MaxLength = 80;
             this.txtMileage.Multiline = true;
@@ -177,7 +181,8 @@
             // txtCar
             // 
             this.txtCar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtCar.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCar.ForeColor = System.Drawing.Color.White;
             this.txtCar.Location = new System.Drawing.Point(712, 216);
             this.txtCar.MaxLength = 80;
             this.txtCar.Multiline = true;
@@ -190,7 +195,8 @@
             // txtName
             // 
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.txtName.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtName.ForeColor = System.Drawing.Color.White;
             this.txtName.Location = new System.Drawing.Point(38, 114);
             this.txtName.MaxLength = 80;
             this.txtName.Multiline = true;
@@ -204,7 +210,7 @@
             // 
             this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAccount.Location = new System.Drawing.Point(908, 42);
             this.btnAccount.Name = "btnAccount";
@@ -218,7 +224,7 @@
             // 
             this.btnAddOffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnAddOffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddOffer.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddOffer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddOffer.Location = new System.Drawing.Point(473, 42);
             this.btnAddOffer.Name = "btnAddOffer";
@@ -232,7 +238,7 @@
             // 
             this.btnOffers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnOffers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOffers.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnOffers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnOffers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnOffers.Location = new System.Drawing.Point(38, 42);
             this.btnOffers.Name = "btnOffers";
@@ -253,7 +259,7 @@
             this.Controls.Add(this.cbFuel);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.cbState);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtProd);
             this.Controls.Add(this.txtMileage);
@@ -280,7 +286,7 @@
         private ComboBox cbFuel;
         private ComboBox cbType;
         private ComboBox cbState;
-        private TextBox textBox1;
+        private TextBox txtDesc;
         private TextBox txtPrice;
         private TextBox txtProd;
         private TextBox txtMileage;

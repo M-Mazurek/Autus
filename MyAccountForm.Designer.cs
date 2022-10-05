@@ -29,13 +29,14 @@
             this.btnOffers = new System.Windows.Forms.Button();
             this.offers = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtOffersCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAccount
             // 
             this.btnAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAccount.Location = new System.Drawing.Point(902, 42);
             this.btnAccount.Name = "btnAccount";
@@ -49,7 +50,7 @@
             // 
             this.btnAddOffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnAddOffer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddOffer.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddOffer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddOffer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddOffer.Location = new System.Drawing.Point(467, 42);
             this.btnAddOffer.Name = "btnAddOffer";
@@ -63,7 +64,7 @@
             // 
             this.btnOffers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.btnOffers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOffers.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnOffers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnOffers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnOffers.Location = new System.Drawing.Point(32, 42);
             this.btnOffers.Name = "btnOffers";
@@ -86,20 +87,32 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Ubuntu", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(188, 122);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 39);
+            this.label1.Size = new System.Drawing.Size(199, 37);
             this.label1.TabIndex = 16;
             this.label1.Text = "Twoje oferty:";
             // 
-            // MyAccount
+            // txtOffersCount
+            // 
+            this.txtOffersCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOffersCount.ForeColor = System.Drawing.Color.White;
+            this.txtOffersCount.Location = new System.Drawing.Point(902, 122);
+            this.txtOffersCount.Name = "txtOffersCount";
+            this.txtOffersCount.Size = new System.Drawing.Size(307, 37);
+            this.txtOffersCount.TabIndex = 17;
+            this.txtOffersCount.Text = "Ilość ofert:";
+            this.txtOffersCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // MyAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1384, 749);
+            this.Controls.Add(this.txtOffersCount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.offers);
             this.Controls.Add(this.btnAccount);
@@ -108,7 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1400, 788);
             this.MinimumSize = new System.Drawing.Size(1400, 788);
-            this.Name = "MyAccount";
+            this.Name = "MyAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autus : Moje Konto";
             this.Load += new System.EventHandler(this.MyAccount_Load);
@@ -124,5 +137,6 @@
         private Button btnOffers;
         private Panel offers;
         private Label label1;
+        private Label txtOffersCount;
     }
 }

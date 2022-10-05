@@ -12,7 +12,6 @@ namespace Autus {
     public partial class OffersForm : Form {
         private const int PANEL_HEIGHT = 100;
         private Global.Offer[]? _offers;
-        private record EnumTextPair(int Value, string Text);
         public OffersForm() {
             InitializeComponent();
         }
@@ -77,23 +76,23 @@ namespace Autus {
             lbBrand.Items.Clear();
             Global.GetBrands().ToList().ForEach(x => lbBrand.Items.Add(x));
 
-            List<EnumTextPair> stateList = new();
+            List<Global.EnumTextPair> stateList = new();
             foreach (var val in Enum.GetValues(typeof(STATE)))
-                stateList.Add(new EnumTextPair((int)val, val.ToString()!));
+                stateList.Add(new Global.EnumTextPair((int)val, Global.Ts((STATE)val).ToString()!));
 
             lbState.DisplayMember = "Text";
             lbState.DataSource = stateList;
 
-            List<EnumTextPair> bodyList = new();
+            List<Global.EnumTextPair> bodyList = new();
             foreach (var val in Enum.GetValues(typeof(BODY_TYPE)))
-                bodyList.Add(new EnumTextPair((int)val, val.ToString()!));
+                bodyList.Add(new Global.EnumTextPair((int)val, Global.Tb((BODY_TYPE)val).ToString()!));
 
             lbBody.DisplayMember = "Text";
             lbBody.DataSource = bodyList;
 
-            List<EnumTextPair> fuelList = new();
+            List<Global.EnumTextPair> fuelList = new();
             foreach (var val in Enum.GetValues(typeof(FUEL_TYPE)))
-                fuelList.Add(new EnumTextPair((int)val, val.ToString()!));
+                fuelList.Add(new Global.EnumTextPair((int)val, Global.Tf((FUEL_TYPE)val).ToString()!));
 
             lbFuel.DisplayMember = "Text";
             lbFuel.DataSource = fuelList;
@@ -120,18 +119,16 @@ namespace Autus {
                 brands.Add(selectedItem.ToString()!);
 
             int bitState = 0;
-            foreach (EnumTextPair selectedItem in lbState.SelectedItems) 
+            foreach (Global.EnumTextPair selectedItem in lbState.SelectedItems) 
                 bitState += selectedItem.Value;
 
             int bitBody = 0;
-            foreach (EnumTextPair selectedItem in lbBody.SelectedItems)
+            foreach (Global.EnumTextPair selectedItem in lbBody.SelectedItems)
                 bitBody += selectedItem.Value;
 
             int bitFuel = 0;
-            foreach (EnumTextPair selectedItem in lbFuel.SelectedItems)
+            foreach (Global.EnumTextPair selectedItem in lbFuel.SelectedItems)
                 bitFuel += selectedItem.Value;
-
-            MessageBox.Show($"State: {bitState}, Body: {bitBody}, Fuel: {bitFuel}");
 
             //((KYS)lbState.SelectedItem).Value;
             _offers = Array.Empty<Global.Offer>();

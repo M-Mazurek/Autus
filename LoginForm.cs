@@ -25,18 +25,26 @@ namespace Autus {
         private void btnLogin_Click(object sender, EventArgs e) {
             // sprawdzanie loginu, hasła, czy jest w bazie itp.
 
-            if (String.IsNullOrEmpty(txtPassword.Text))
+            if (String.IsNullOrEmpty(txtPassword.Text)) 
+            {
                 new LoginErrorDialog().ShowDialog();
+                return;
+            }
 
             if (Global.HasUser(txtLogin.Text))
             {
-                if (!Global.SignIn(txtLogin.Text, txtPassword.Text))
+                if (!Global.SignIn(txtLogin.Text, txtPassword.Text)) 
+                {
+                    new LoginErrorDialog().ShowDialog(); 
                     return;
+                }
+                new LoginDialog().ShowDialog();
                 SignIn();
             }
             else
             {
                 Global.AddUser(txtLogin.Text, txtPassword.Text);
+                new RegisterDialog().ShowDialog();
                 SignIn();
             }
         }

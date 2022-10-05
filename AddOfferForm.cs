@@ -18,6 +18,27 @@ namespace Autus {
         // sterowanie
         private void AddOfferForm_Load(object sender, EventArgs e) { 
             btnAddOffer.Enabled = false;
+
+            List<Global.EnumTextPair> stateList = new();
+            foreach (var val in Enum.GetValues(typeof(STATE)))
+                stateList.Add(new Global.EnumTextPair((int)val, Global.Ts((STATE)val).ToString()!));
+
+            cbState.DisplayMember = "Text";
+            cbState.DataSource = stateList;
+
+            List<Global.EnumTextPair> bodyList = new();
+            foreach (var val in Enum.GetValues(typeof(BODY_TYPE)))
+                bodyList.Add(new Global.EnumTextPair((int)val, Global.Tb((BODY_TYPE)val).ToString()!));
+
+            cbBody.DisplayMember = "Text";
+            cbBody.DataSource = bodyList;
+
+            List<Global.EnumTextPair> fuelList = new();
+            foreach (var val in Enum.GetValues(typeof(FUEL_TYPE)))
+                fuelList.Add(new Global.EnumTextPair((int)val, Global.Tf((FUEL_TYPE)val).ToString()!));
+
+            cbFuel.DisplayMember = "Text";
+            cbFuel.DataSource = fuelList;
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {
@@ -43,6 +64,7 @@ namespace Autus {
                             (STATE)Math.Pow(2, cbState.SelectedIndex),
                             (BODY_TYPE)Math.Pow(2, cbBody.SelectedIndex),
                             (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            new OfferAddedDialog().ShowDialog();
             this.Hide();
             new MyAccountForm().ShowDialog();
             this.Close();

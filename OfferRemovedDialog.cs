@@ -13,5 +13,10 @@ namespace Autus {
         public OfferRemovedDialog() {
             InitializeComponent();
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

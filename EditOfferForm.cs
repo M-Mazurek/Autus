@@ -29,6 +29,27 @@ namespace Autus {
             cbState.SelectedIndex = (int)Math.Log2((double)offer.State);
             cbFuel.SelectedIndex = (int)Math.Log2((double)offer.FuelType);
             cbType.SelectedIndex = (int)Math.Log2((double)offer.BodyType);
+
+            List<Global.EnumTextPair> stateList = new();
+            foreach (var val in Enum.GetValues(typeof(STATE)))
+                stateList.Add(new Global.EnumTextPair((int)val, Global.Ts((STATE)val).ToString()!));
+
+            cbState.DisplayMember = "Text";
+            cbState.DataSource = stateList;
+
+            List<Global.EnumTextPair> bodyList = new();
+            foreach (var val in Enum.GetValues(typeof(BODY_TYPE)))
+                bodyList.Add(new Global.EnumTextPair((int)val, Global.Tb((BODY_TYPE)val).ToString()!));
+
+            cbType.DisplayMember = "Text";
+            cbType.DataSource = bodyList;
+
+            List<Global.EnumTextPair> fuelList = new();
+            foreach (var val in Enum.GetValues(typeof(FUEL_TYPE)))
+                fuelList.Add(new Global.EnumTextPair((int)val, Global.Tf((FUEL_TYPE)val).ToString()!));
+
+            cbFuel.DisplayMember = "Text";
+            cbFuel.DataSource = fuelList;
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {
@@ -62,6 +83,7 @@ namespace Autus {
                             (STATE)Math.Pow(2, cbState.SelectedIndex),
                             (BODY_TYPE)Math.Pow(2, cbType.SelectedIndex),
                             (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            new OfferEditedDialog().ShowDialog();
             this.Hide();
             new MyAccountForm().ShowDialog();
             this.Close();

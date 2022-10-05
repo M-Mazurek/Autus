@@ -22,12 +22,12 @@ namespace Autus {
             lblTitle.Text = $"Oferta użytkownika: {_offer.Author}"; // użytkownik
             //lblPics.Text = $"Zdjęcia pojazdu: {offers[0].Id}"; // nazwa pojazdu
             lblCar.Text = $"Marka: {_offer.Brand}"; 
-            lblFuel.Text = $"Rodzaj paliwa: {_offer.FuelType}"; 
+            lblFuel.Text = $"Rodzaj paliwa: {Global.Tf(_offer.FuelType)}"; 
             lblMileage.Text = $"Przebieg: {_offer.Mileage}"; 
             lblPrice.Text = $"Cena: {_offer.Price}"; 
             lblProd.Text = $"Rok produkcji: {_offer.ProdYear}";
-            lblState.Text = $"Stan: {_offer.State}";
-            lblType.Text = $"Typ samochodu: {_offer.BodyType}";
+            lblState.Text = $"Stan: {Global.Ts(_offer.State)}";
+            lblType.Text = $"Typ samochodu: {Global.Tb(_offer.BodyType)}";
             lblDesc.Text = _offer.Desc; // opis
             // chyba wszystko
             pictures.ConvertToImageSlider(_offer.Id);
@@ -54,8 +54,9 @@ namespace Autus {
         // reszta
         private void btnBuy_Click(object sender, EventArgs e) {
             Global.RemoveOffer(_offer.Id);
+            new OfferBoughtDialog().ShowDialog();
             this.Hide();
-            new MyAccountForm().ShowDialog();
+            new OffersForm().ShowDialog();
             this.Close();
         }
     }

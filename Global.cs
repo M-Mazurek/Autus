@@ -12,30 +12,68 @@ namespace Autus
     public enum STATE
     {
         NEW = 1,
-        USED = 2
+        USED = 2,
+        DROWNED = 4,
+        CRUSHED = 8
     }
     [Flags]
     public enum BODY_TYPE
     {
         HATCHBACK = 1,
         SUV = 2,
-        SEDAN = 4
+        SEDAN = 4,
+        COUPE = 8,
+        CABRIOLET = 16,
+        VAN = 32,
+        COMBI = 64,
     }
     [Flags]
     public enum FUEL_TYPE
     {
         PETROL = 1,
-        DIESEL = 2
+        DIESEL = 2,
+        GAS = 4,
+        ELECTRIC = 8,
+        HYBRID = 16,
+        HYDROGEN = 32,
+        ETANOL = 64
     }
-
     public static class Global
     {
         readonly static string DIR;
         readonly static SqlConnection CONN;
-
+        public record EnumTextPair(int Value, string Text);
         public record Offer(int Id, string Author, string Title, string Desc, float Price, int ProdYear, float Mileage, string Brand, STATE State, BODY_TYPE BodyType, FUEL_TYPE FuelType);
 
         public static string User { get; private set; } = "user1";
+
+        public static string Ts(STATE s) => s switch
+        {
+            STATE.NEW => "Nowy",
+            STATE.USED => "Używany",
+            STATE.DROWNED => "Topielec",
+            STATE.CRUSHED => "Powypadkowy"
+        };
+        public static string Tb(BODY_TYPE b) => b switch
+        {
+            BODY_TYPE.HATCHBACK => "Hatchback",
+            BODY_TYPE.SUV => "SUV",
+            BODY_TYPE.SEDAN => "Sedan",
+            BODY_TYPE.COUPE => "Coupe",
+            BODY_TYPE.CABRIOLET => "Kabriolet",
+            BODY_TYPE.VAN => "Van",
+            BODY_TYPE.COMBI => "Kombi",
+        };
+        public static string Tf(FUEL_TYPE f) => f switch
+        {
+            FUEL_TYPE.PETROL => "Benzyna",
+            FUEL_TYPE.DIESEL => "Diesel",
+            FUEL_TYPE.GAS => "Gas",
+            FUEL_TYPE.ELECTRIC => "Elektryk",
+            FUEL_TYPE.HYBRID => "Hybryda",
+            FUEL_TYPE.HYDROGEN => "Wodór",
+            FUEL_TYPE.ETANOL => "Etanol"
+        };
 
         public static int AddOffer(string title, string desc, float price, int prodYear, float mileage, string brand, STATE state, BODY_TYPE bodyType, FUEL_TYPE fuelType)
         {
@@ -134,7 +172,6 @@ namespace Autus
                             " AND (@state & state) > 0" +
                             " AND (@body_type & body_type) > 0" + 
                             " AND (@fuel_type & fuel_type) > 0";
-            MessageBox.Show(cmdTxt);
             SqlCommand cmd = new(cmdTxt, CONN);
 
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);

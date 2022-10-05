@@ -23,13 +23,14 @@ namespace Autus {
             foreach (var off in _offers)
             {
                 if (off.Author == Global.User) 
-                {                    
+                {
                     MyOfferPanel OfferPanel = new()
                     {
                         Height = PANEL_HEIGHT,
                         Location = new(5, 5 + (PANEL_HEIGHT + 5) * MyOffersCount),
+                        OfferNumber = OffersCount,
+                        OfferID = off.Id,
                     };
-                    OfferPanel.OfferNumber = OffersCount; // off.ID != _offers[id]
                     OfferPanel.SetOffer(off.Title, off.Desc, off.Price);
 
                     foreach(Control c in OfferPanel.Controls)

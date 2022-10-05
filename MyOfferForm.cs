@@ -23,12 +23,12 @@ namespace Autus {
             //lblTitle.Text = $"Oferta użytkownika: {_offers.Author}"; // użytkownik
             //lblPics.Text = $"Zdjęcia pojazdu: {offers.Id}"; // nazwa pojazdu
             lblCar.Text = $"Marka: {_offers.Brand}";
-            lblFuel.Text = $"Rodzaj paliwa: {_offers.FuelType}";
+            lblFuel.Text = $"Rodzaj paliwa: {Global.Tf(_offers.FuelType)}";
             lblMileage.Text = $"Przebieg: {_offers.Mileage}";
             lblPrice.Text = $"Cena: {_offers.Price}";
             lblProd.Text = $"Rok produkcji: {_offers.ProdYear}";
-            lblState.Text = $"Stan: {_offers.State}";
-            lblType.Text = $"Typ samochodu: {_offers.BodyType}";
+            lblState.Text = $"Stan: {Global.Ts(_offers.State)}";
+            lblType.Text = $"Typ samochodu: {Global.Tb(_offers.BodyType)}";
             lblDesc.Text = _offers.Desc;
             pictures.ConvertToImageSlider(_offers.Id);
         }
@@ -54,6 +54,7 @@ namespace Autus {
         private void btnRemove_Click(object sender, EventArgs e)
         {
             Global.RemoveOffer(_offers.Id);
+            new OfferRemovedDialog().ShowDialog();
             this.Hide();
             new MyAccountForm().ShowDialog();
             this.Close();

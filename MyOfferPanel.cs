@@ -13,6 +13,7 @@ namespace Autus
     public partial class MyOfferPanel : UserControl
     {
         public int OfferNumber { get; set; } = 0;
+        public int OfferID { get; set; } = 0;
         public MyOfferPanel()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Autus
             txtTitle.Text = title;
             txtDescription.Text = description;
             txtPrice.Text = price.ToString() + " zł";
-            //pic.Image = "path";
+            pic.ConvertToOfferImage(OfferID);
         }
     }
 }

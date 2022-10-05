@@ -42,6 +42,7 @@
             this.pic.Margin = new System.Windows.Forms.Padding(0);
             this.pic.Name = "pic";
             this.pic.Size = new System.Drawing.Size(200, 90);
+            this.pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic.TabIndex = 0;
             this.pic.TabStop = false;
             // 

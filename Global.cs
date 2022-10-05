@@ -67,6 +67,49 @@ namespace Autus
             return cmd.ExecuteNonQuery();
         }
 
+        public static int EditOffer(int id, string title, string desc, float price, int prodYear, float mileage, string brand, STATE state, BODY_TYPE bodyType, FUEL_TYPE fuelType)
+        {
+            string cmdTxt = "UPDATE offers SET author = @author, title = @title, [desc] = @desc, price = @price, prod_year = @prod_year, mileage = @mileage, brand = @brand, state = @state, body_type = @body_type, fuel_type = @fuel_type WHERE id = @id";
+            SqlCommand cmd = new(cmdTxt, CONN);
+
+            cmd.Parameters.Add("@author", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@title", System.Data.SqlDbType.VarChar, 50);
+            cmd.Parameters.Add("@desc", System.Data.SqlDbType.VarChar, 256);
+            cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
+            cmd.Parameters.Add("@prod_year", System.Data.SqlDbType.SmallInt);
+            cmd.Parameters.Add("@mileage", System.Data.SqlDbType.Float);
+            cmd.Parameters.Add("@brand", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@state", System.Data.SqlDbType.TinyInt);
+            cmd.Parameters.Add("@body_type", System.Data.SqlDbType.TinyInt);
+            cmd.Parameters.Add("@fuel_type", System.Data.SqlDbType.TinyInt);
+            cmd.Parameters.Add("@id", System.Data.SqlDbType.Int);
+
+            cmd.Parameters["@author"].Value = User;
+            cmd.Parameters["@title"].Value = title;
+            cmd.Parameters["@desc"].Value = desc;
+            cmd.Parameters["@price"].Value = price;
+            cmd.Parameters["@prod_year"].Value = prodYear;
+            cmd.Parameters["@mileage"].Value = mileage;
+            cmd.Parameters["@brand"].Value = brand;
+            cmd.Parameters["@state"].Value = state;
+            cmd.Parameters["@body_type"].Value = bodyType;
+            cmd.Parameters["@fuel_type"].Value = fuelType;
+            cmd.Parameters["@id"].Value = id;
+
+            return cmd.ExecuteNonQuery();
+        }
+
+        public static int RemoveOffer(int id)
+        {
+            string cmdTxt = "DELETE FROM offers WHERE id = @id";
+            SqlCommand cmd = new(cmdTxt, CONN);
+
+            cmd.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            cmd.Parameters["@id"].Value = id;
+
+            return cmd.ExecuteNonQuery();
+        }
+
         public static Offer[] GetOffers()
         {
             return GetOffers(GetDefaultPriceRange(), GetDefaultProdYearRange(), GetDefaultMileageRange(), GetBrands(), GetDefaultStateFilter(), GetDefaultBodyTypeFilter(), GetDefaultFuelTypeFilter());
@@ -267,8 +310,17 @@ namespace Autus
         public static int GetDefaultFuelTypeFilter() => Enum.GetValues(typeof(FUEL_TYPE)).Cast<int>().Last() * 2 - 1;
         #endregion
 
-        public static void ConvertToOfferImage(this PictureBox box, int offerId) =>
-            box.Image = Image.FromFile(Path.Combine(DIR, "imgs", offerId + "_0.png"));
+        public static void ConvertToOfferImage(this PictureBox box, int offerId)
+        {
+            try
+            {
+                box.Image = Image.FromFile(Path.Combine(DIR, "imgs", offerId + "_0.png"));
+            }
+            catch
+            {
+                box.Image = Image.FromFile(Path.Combine(DIR, "imgs", "plchldr.png"));
+            }
+        }
 
         private static void DrawArrows(object? s, MouseEventArgs e)
         {

@@ -12,6 +12,7 @@ namespace Autus {
     public partial class OffersForm : Form {
         private const int PANEL_HEIGHT = 100;
         private Global.Offer[]? _offers;
+        private record EnumTextPair(int Value, string Text);
         public OffersForm() {
             InitializeComponent();
         }
@@ -29,8 +30,10 @@ namespace Autus {
                 {
                     Height = PANEL_HEIGHT,
                     Location = new(5, 5 + (PANEL_HEIGHT + 5) * OffersCount),
-                };
-                OfferPanel.OfferNumber = OfferNumber;
+
+                    OfferNumber = OfferNumber,
+                    OfferID = o.Id
+            };
                 OfferPanel.SetOffer(o.Title, o.Desc, o.Price);
 
                 foreach (Control c in OfferPanel.Controls)
@@ -48,11 +51,7 @@ namespace Autus {
             new OfferForm((((Control)sender!).Parent as MyOfferPanel)!.OfferNumber).ShowDialog();
             Close();
         }
-        private class KYS 
-        {
-            public int Value { get; set; }
-            public string Text { get; set; }
-        }
+
         // sterowanie
         private void MainForm_Load(object sender, EventArgs e) {
             btnOffers.Enabled = false;
@@ -78,23 +77,23 @@ namespace Autus {
             lbBrand.Items.Clear();
             Global.GetBrands().ToList().ForEach(x => lbBrand.Items.Add(x));
 
-            List<KYS> kysList = new List<KYS>();
+            List<EnumTextPair> kysList = new();
             foreach (var val in Enum.GetValues(typeof(STATE)))
-                kysList.Add(new KYS() { Value = (int)val, Text = val.ToString()! });
+                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbState.DisplayMember = "Text";
             lbState.DataSource = kysList;
             kysList.Clear();
 
             foreach (var val in Enum.GetValues(typeof(BODY_TYPE)))
-                kysList.Add(new KYS() { Value = (int)val, Text = val.ToString()! });
+                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbBody.DisplayMember = "Text";
             lbBody.DataSource = kysList;
             kysList.Clear();
 
             foreach (var val in Enum.GetValues(typeof(FUEL_TYPE)))
-                kysList.Add(new KYS() { Value = (int)val, Text = val.ToString()! });
+                kysList.Add(new EnumTextPair((int)val, val.ToString()!));
 
             lbFuel.DisplayMember = "Text";
             lbFuel.DataSource = kysList;
@@ -122,15 +121,15 @@ namespace Autus {
                 brands.Add(selectedItem.ToString()!);
 
             int bitState = 0;
-            foreach (KYS selectedItem in lbState.SelectedItems) 
+            foreach (EnumTextPair selectedItem in lbState.SelectedItems) 
                 bitState += selectedItem.Value;
 
             int bitBody = 0;
-            foreach (KYS selectedItem in lbBody.SelectedItems)
+            foreach (EnumTextPair selectedItem in lbBody.SelectedItems)
                 bitBody += selectedItem.Value;
 
             int bitFuel = 0;
-            foreach (KYS selectedItem in lbFuel.SelectedItems)
+            foreach (EnumTextPair selectedItem in lbFuel.SelectedItems)
                 bitFuel += selectedItem.Value;
 
             //((KYS)lbState.SelectedItem).Value;

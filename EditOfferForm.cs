@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Autus {
-    public partial class EditOfferForm : Form {
+    public partial class EditOfferForm : Form 
+    {
         private Global.Offer offer;
+        Image[] _chosenImages = Array.Empty<Image>();
         public EditOfferForm(int offerNumber)
         {
             InitializeComponent();
@@ -83,14 +85,17 @@ namespace Autus {
                             (STATE)Math.Pow(2, cbState.SelectedIndex),
                             (BODY_TYPE)Math.Pow(2, cbType.SelectedIndex),
                             (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            if (_chosenImages.Length > 0)
+                Global.SaveOfferImages(_chosenImages, offer.Id, true);
             new OfferEditedDialog().ShowDialog();
             this.Hide();
             new MyAccountForm().ShowDialog();
             this.Close();
         }
 
-        private void btnAttach_Click(object sender, EventArgs e) {
-
+        private void btnAttach_Click(object sender, EventArgs e) 
+        {
+            _chosenImages = Global.ChooseOfferImages();
         }
     }
 }

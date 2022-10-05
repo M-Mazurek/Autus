@@ -452,6 +452,40 @@ namespace Autus
             };
         }
 
+        public static Image[] ChooseOfferImages()
+        {
+            OpenFileDialog ofd = new()
+            {
+                Multiselect = true,
+                Filter = "Images (*.JPG)|*.JPG",
+                Title = "Wybierz zdjęcia"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                return ofd.FileNames.Select(x => Image.FromFile(x)).ToArray();
+            }
+
+            return Array.Empty<Image>();
+        }
+
+        public static void SaveOfferImages(Image[] imgs, int offerID, bool removePrevious = false)
+        {
+            if (removePrevious)
+                foreach (var prev in new DirectoryInfo(Path.Combine(DIR, "imgs")).GetFiles($"{offerID}_*.png"))
+                    File.Delete(prev.FullName);
+            for (int i = 0; i < imgs.Length; i++)
+                imgs[i].Save(Path.Combine(DIR, "imgs", $"{offerID}_{i}.png"));
+        }
+
+        public static int GetLastID()
+        {
+            string cmdTxt = "SELECT MAX(id) FROM offers";
+            SqlCommand cmd = new(cmdTxt, CONN);
+
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
         static Global()
         {
             DIR = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;

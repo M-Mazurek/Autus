@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Autus {
-    public partial class AddOfferForm : Form {
+    public partial class AddOfferForm : Form 
+    {
+        Image[] _chosenImages = Array.Empty<Image>();
         public AddOfferForm()
         {
             InitializeComponent();
@@ -64,14 +66,15 @@ namespace Autus {
                             (STATE)Math.Pow(2, cbState.SelectedIndex),
                             (BODY_TYPE)Math.Pow(2, cbBody.SelectedIndex),
                             (FUEL_TYPE)Math.Pow(2, cbFuel.SelectedIndex));
+            Global.SaveOfferImages(_chosenImages, Global.GetLastID());
             new OfferAddedDialog().ShowDialog();
-            this.Hide();
+            Hide();
             new MyAccountForm().ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void btnAttach_Click(object sender, EventArgs e) {
-            //idk
+            _chosenImages = Global.ChooseOfferImages();
         }
 
     }

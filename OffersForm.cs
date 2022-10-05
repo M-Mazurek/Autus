@@ -98,6 +98,8 @@ namespace Autus {
             lbFuel.DisplayMember = "Text";
             lbFuel.DataSource = kysList;
 
+            
+
             _offers = Global.GetOffers();
             LoadOffers();
         }

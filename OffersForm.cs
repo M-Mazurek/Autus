@@ -55,6 +55,11 @@ namespace Autus {
         private void MainForm_Load(object sender, EventArgs e) {
             btnOffers.Enabled = false;
 
+            offers.HorizontalScroll.Maximum = 0;
+            offers.AutoScroll = false;
+            offers.VerticalScroll.Visible = false;
+            offers.AutoScroll = true;
+
             priceMin.Minimum = (decimal)Global.GetDefaultPriceRange().Item1;
             priceMin.Maximum = (decimal)Global.GetDefaultPriceRange().Item2;
             priceMax.Minimum = (decimal)Global.GetDefaultPriceRange().Item1;

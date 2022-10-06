@@ -43,6 +43,8 @@ namespace Autus {
             }
             else
             {
+                if (new RegisterConfirm().ShowDialog() == DialogResult.Cancel)
+                    return;
                 Global.AddUser(txtLogin.Text, txtPassword.Text);
                 new RegisterDialog().ShowDialog();
                 SignIn();

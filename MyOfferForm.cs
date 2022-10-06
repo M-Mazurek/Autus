@@ -53,6 +53,9 @@ namespace Autus {
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            if (new DeleteOffer().ShowDialog() == DialogResult.Cancel)
+                return;
+
             Global.RemoveOffer(_offer.Id);
             new OfferRemovedDialog().ShowDialog();
             this.Hide();

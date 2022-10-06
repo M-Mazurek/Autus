@@ -26,6 +26,7 @@ namespace Autus
         CABRIOLET = 16,
         VAN = 32,
         COMBI = 64,
+        PICKUP = 128
     }
     [Flags]
     public enum FUEL_TYPE
@@ -64,6 +65,7 @@ namespace Autus
             BODY_TYPE.CABRIOLET => "Kabriolet",
             BODY_TYPE.VAN => "Van",
             BODY_TYPE.COMBI => "Kombi",
+            BODY_TYPE.PICKUP => "Pickup",
             _ => ""
         };
         public static string Tf(FUEL_TYPE f) => f switch

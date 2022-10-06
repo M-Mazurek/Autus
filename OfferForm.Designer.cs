@@ -27,12 +27,12 @@
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnAddOffer = new System.Windows.Forms.Button();
             this.btnOffers = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.offers = new System.Windows.Forms.Panel();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.offerByPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lblDesc = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictures = new System.Windows.Forms.PictureBox();
-            this.lblPics = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFuel = new System.Windows.Forms.Label();
             this.lblState = new System.Windows.Forms.Label();
@@ -43,7 +43,9 @@
             this.lblCar = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
             this.btnBuy = new System.Windows.Forms.Button();
-            this.offers.SuspendLayout();
+            this.btnRet = new System.Windows.Forms.Button();
+            this.offerByPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictures)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,72 +92,69 @@
             this.btnOffers.UseVisualStyleBackColor = false;
             this.btnOffers.Click += new System.EventHandler(this.btnOffers_Click);
             // 
-            // lblTitle
+            // lblAuthor
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(333, 121);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(307, 37);
-            this.lblTitle.TabIndex = 18;
-            this.lblTitle.Text = "Oferta użytkownika: ";
+            this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAuthor.ForeColor = System.Drawing.Color.White;
+            this.lblAuthor.Location = new System.Drawing.Point(16, 0);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(329, 271);
+            this.lblAuthor.TabIndex = 18;
+            this.lblAuthor.Text = "Oferta użytkownika:";
+            this.lblAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // offers
+            // offerByPanel
             // 
-            this.offers.AutoScroll = true;
-            this.offers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.offers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.offers.Controls.Add(this.lblDesc);
-            this.offers.Controls.Add(this.label1);
-            this.offers.Controls.Add(this.pictures);
-            this.offers.Controls.Add(this.lblPics);
-            this.offers.Location = new System.Drawing.Point(333, 191);
-            this.offers.Name = "offers";
-            this.offers.Size = new System.Drawing.Size(1021, 531);
-            this.offers.TabIndex = 19;
+            this.offerByPanel.AutoScroll = true;
+            this.offerByPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.offerByPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.offerByPanel.Controls.Add(this.panel2);
+            this.offerByPanel.Controls.Add(this.lblAuthor);
+            this.offerByPanel.Controls.Add(this.pictures);
+            this.offerByPanel.Location = new System.Drawing.Point(492, 191);
+            this.offerByPanel.Name = "offerByPanel";
+            this.offerByPanel.Size = new System.Drawing.Size(862, 531);
+            this.offerByPanel.TabIndex = 19;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.lblDesc);
+            this.panel2.Location = new System.Drawing.Point(3, 279);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(851, 245);
+            this.panel2.TabIndex = 23;
             // 
             // lblDesc
             // 
-            this.lblDesc.AutoSize = true;
-            this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDesc.ForeColor = System.Drawing.Color.White;
-            this.lblDesc.Location = new System.Drawing.Point(691, 97);
+            this.lblDesc.Location = new System.Drawing.Point(13, 12);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(35, 16);
+            this.lblDesc.Size = new System.Drawing.Size(831, 222);
             this.lblDesc.TabIndex = 22;
             this.lblDesc.Text = "Opis";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(682, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 29);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Opis";
-            // 
             // pictures
             // 
-            this.pictures.Location = new System.Drawing.Point(19, 97);
+            this.pictures.Location = new System.Drawing.Point(351, 3);
             this.pictures.Name = "pictures";
-            this.pictures.Size = new System.Drawing.Size(657, 387);
+            this.pictures.Size = new System.Drawing.Size(503, 270);
             this.pictures.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictures.TabIndex = 20;
             this.pictures.TabStop = false;
             // 
-            // lblPics
+            // lblTitle
             // 
-            this.lblPics.AutoSize = true;
-            this.lblPics.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPics.ForeColor = System.Drawing.Color.White;
-            this.lblPics.Location = new System.Drawing.Point(19, 34);
-            this.lblPics.Name = "lblPics";
-            this.lblPics.Size = new System.Drawing.Size(314, 37);
-            this.lblPics.TabIndex = 19;
-            this.lblPics.Text = "Zdjęcia samochodu: ";
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(46, 121);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1308, 54);
+            this.lblTitle.TabIndex = 19;
+            this.lblTitle.Text = "Tytuł";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -169,97 +168,96 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lblCar);
             this.panel1.Controls.Add(this.lblPrice);
-            this.panel1.Controls.Add(this.btnBuy);
-            this.panel1.Location = new System.Drawing.Point(46, 121);
+            this.panel1.Location = new System.Drawing.Point(46, 191);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(264, 601);
+            this.panel1.Size = new System.Drawing.Size(429, 406);
             this.panel1.TabIndex = 20;
             // 
             // lblFuel
             // 
             this.lblFuel.AutoSize = true;
-            this.lblFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFuel.ForeColor = System.Drawing.Color.White;
-            this.lblFuel.Location = new System.Drawing.Point(21, 251);
+            this.lblFuel.Location = new System.Drawing.Point(21, 277);
             this.lblFuel.Name = "lblFuel";
-            this.lblFuel.Size = new System.Drawing.Size(95, 16);
+            this.lblFuel.Size = new System.Drawing.Size(111, 20);
             this.lblFuel.TabIndex = 26;
             this.lblFuel.Text = "Rodzaj paliwa:";
             // 
             // lblState
             // 
             this.lblState.AutoSize = true;
-            this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblState.ForeColor = System.Drawing.Color.White;
-            this.lblState.Location = new System.Drawing.Point(21, 217);
+            this.lblState.Location = new System.Drawing.Point(21, 243);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(37, 16);
+            this.lblState.Size = new System.Drawing.Size(47, 20);
             this.lblState.TabIndex = 25;
             this.lblState.Text = "Stan:";
             // 
             // lblProd
             // 
             this.lblProd.AutoSize = true;
-            this.lblProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblProd.ForeColor = System.Drawing.Color.White;
-            this.lblProd.Location = new System.Drawing.Point(21, 177);
+            this.lblProd.Location = new System.Drawing.Point(21, 203);
             this.lblProd.Name = "lblProd";
-            this.lblProd.Size = new System.Drawing.Size(93, 16);
+            this.lblProd.Size = new System.Drawing.Size(109, 20);
             this.lblProd.TabIndex = 24;
             this.lblProd.Text = "Rok produkcji:";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblType.ForeColor = System.Drawing.Color.White;
-            this.lblType.Location = new System.Drawing.Point(21, 138);
+            this.lblType.Location = new System.Drawing.Point(21, 164);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(108, 16);
+            this.lblType.Size = new System.Drawing.Size(125, 20);
             this.lblType.TabIndex = 23;
             this.lblType.Text = "Typ samochodu:";
             // 
             // lblMileage
             // 
             this.lblMileage.AutoSize = true;
-            this.lblMileage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMileage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblMileage.ForeColor = System.Drawing.Color.White;
-            this.lblMileage.Location = new System.Drawing.Point(21, 104);
+            this.lblMileage.Location = new System.Drawing.Point(21, 130);
             this.lblMileage.Name = "lblMileage";
-            this.lblMileage.Size = new System.Drawing.Size(64, 16);
+            this.lblMileage.Size = new System.Drawing.Size(75, 20);
             this.lblMileage.TabIndex = 22;
             this.lblMileage.Text = "Przebieg:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(73, 27);
+            this.label3.Location = new System.Drawing.Point(3, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 25);
+            this.label3.Size = new System.Drawing.Size(419, 25);
             this.label3.TabIndex = 21;
             this.label3.Text = "Szczegóły";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCar
             // 
             this.lblCar.AutoSize = true;
-            this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblCar.ForeColor = System.Drawing.Color.White;
-            this.lblCar.Location = new System.Drawing.Point(21, 68);
+            this.lblCar.Location = new System.Drawing.Point(21, 94);
             this.lblCar.Name = "lblCar";
-            this.lblCar.Size = new System.Drawing.Size(48, 16);
+            this.lblCar.Size = new System.Drawing.Size(57, 20);
             this.lblCar.TabIndex = 20;
             this.lblCar.Text = "Marka:";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPrice.ForeColor = System.Drawing.Color.White;
-            this.lblPrice.Location = new System.Drawing.Point(21, 386);
+            this.lblPrice.Location = new System.Drawing.Point(21, 347);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(42, 16);
+            this.lblPrice.Size = new System.Drawing.Size(76, 29);
             this.lblPrice.TabIndex = 19;
             this.lblPrice.Text = "Cena:";
             // 
@@ -269,13 +267,27 @@
             this.btnBuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBuy.ForeColor = System.Drawing.Color.White;
-            this.btnBuy.Location = new System.Drawing.Point(63, 522);
+            this.btnBuy.Location = new System.Drawing.Point(46, 647);
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(140, 49);
             this.btnBuy.TabIndex = 1;
-            this.btnBuy.Text = "Kup";
+            this.btnBuy.Text = "Kup teraz";
             this.btnBuy.UseVisualStyleBackColor = false;
             this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
+            // 
+            // btnRet
+            // 
+            this.btnRet.BackColor = System.Drawing.Color.Gray;
+            this.btnRet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRet.ForeColor = System.Drawing.Color.White;
+            this.btnRet.Location = new System.Drawing.Point(335, 647);
+            this.btnRet.Name = "btnRet";
+            this.btnRet.Size = new System.Drawing.Size(140, 49);
+            this.btnRet.TabIndex = 21;
+            this.btnRet.Text = "Powrót";
+            this.btnRet.UseVisualStyleBackColor = false;
+            this.btnRet.Click += new System.EventHandler(this.btnRet_Click);
             // 
             // OfferForm
             // 
@@ -284,9 +296,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1384, 749);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.offers);
-            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnRet);
+            this.Controls.Add(this.offerByPanel);
             this.Controls.Add(this.btnAccount);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnBuy);
             this.Controls.Add(this.btnAddOffer);
             this.Controls.Add(this.btnOffers);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -296,13 +310,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autus : Oferta";
             this.Load += new System.EventHandler(this.OfferForm_Load);
-            this.offers.ResumeLayout(false);
-            this.offers.PerformLayout();
+            this.offerByPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictures)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -311,21 +324,22 @@
         private Button btnAccount;
         private Button btnAddOffer;
         private Button btnOffers;
-        private Label lblTitle;
-        private Panel offers;
+        private Label lblAuthor;
+        private Panel offerByPanel;
         private Panel panel1;
         private Button btnBuy;
-        private Label lblPics;
+        private Label lblTitle;
         private PictureBox pictures;
         private Label lblPrice;
         private Label label3;
         private Label lblCar;
         private Label lblMileage;
         private Label lblType;
-        private Label label1;
         private Label lblFuel;
         private Label lblState;
         private Label lblProd;
         private Label lblDesc;
+        private Button btnRet;
+        private Panel panel2;
     }
 }

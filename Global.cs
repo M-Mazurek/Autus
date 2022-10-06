@@ -52,7 +52,8 @@ namespace Autus
             STATE.NEW => "Nowy",
             STATE.USED => "Używany",
             STATE.DROWNED => "Topielec",
-            STATE.CRUSHED => "Powypadkowy"
+            STATE.CRUSHED => "Powypadkowy",
+            _ => ""
         };
         public static string Tb(BODY_TYPE b) => b switch
         {
@@ -63,6 +64,7 @@ namespace Autus
             BODY_TYPE.CABRIOLET => "Kabriolet",
             BODY_TYPE.VAN => "Van",
             BODY_TYPE.COMBI => "Kombi",
+            _ => ""
         };
         public static string Tf(FUEL_TYPE f) => f switch
         {
@@ -72,7 +74,8 @@ namespace Autus
             FUEL_TYPE.ELECTRIC => "Elektryk",
             FUEL_TYPE.HYBRID => "Hybryda",
             FUEL_TYPE.HYDROGEN => "Wodór",
-            FUEL_TYPE.ETANOL => "Etanol"
+            FUEL_TYPE.ETANOL => "Etanol",
+            _ => ""
         };
 
         public static int AddOffer(string title, string desc, float price, int prodYear, float mileage, string brand, STATE state, BODY_TYPE bodyType, FUEL_TYPE fuelType)
@@ -80,13 +83,13 @@ namespace Autus
             string cmdTxt = "INSERT INTO offers (author, title, [desc], price, prod_year, mileage, brand, state, body_type, fuel_type) VALUES (@author, @title, @desc, @price, @prod_year, @mileage, @brand, @state, @body_type, @fuel_type)";
             SqlCommand cmd = new(cmdTxt, CONN);
 
-            cmd.Parameters.Add("@author", System.Data.SqlDbType.VarChar, 20);
-            cmd.Parameters.Add("@title", System.Data.SqlDbType.VarChar, 50);
-            cmd.Parameters.Add("@desc", System.Data.SqlDbType.VarChar, 256);
+            cmd.Parameters.Add("@author", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@title", System.Data.SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@desc", System.Data.SqlDbType.NVarChar, 256);
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
             cmd.Parameters.Add("@prod_year", System.Data.SqlDbType.SmallInt);
             cmd.Parameters.Add("@mileage", System.Data.SqlDbType.Float);
-            cmd.Parameters.Add("@brand", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@brand", System.Data.SqlDbType.NVarChar, 20);
             cmd.Parameters.Add("@state", System.Data.SqlDbType.TinyInt);
             cmd.Parameters.Add("@body_type", System.Data.SqlDbType.TinyInt);
             cmd.Parameters.Add("@fuel_type", System.Data.SqlDbType.TinyInt);
@@ -110,13 +113,13 @@ namespace Autus
             string cmdTxt = "UPDATE offers SET author = @author, title = @title, [desc] = @desc, price = @price, prod_year = @prod_year, mileage = @mileage, brand = @brand, state = @state, body_type = @body_type, fuel_type = @fuel_type WHERE id = @id";
             SqlCommand cmd = new(cmdTxt, CONN);
 
-            cmd.Parameters.Add("@author", System.Data.SqlDbType.VarChar, 20);
-            cmd.Parameters.Add("@title", System.Data.SqlDbType.VarChar, 50);
-            cmd.Parameters.Add("@desc", System.Data.SqlDbType.VarChar, 256);
+            cmd.Parameters.Add("@author", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@title", System.Data.SqlDbType.NVarChar, 50);
+            cmd.Parameters.Add("@desc", System.Data.SqlDbType.NVarChar, 256);
             cmd.Parameters.Add("@price", System.Data.SqlDbType.Float);
             cmd.Parameters.Add("@prod_year", System.Data.SqlDbType.SmallInt);
             cmd.Parameters.Add("@mileage", System.Data.SqlDbType.Float);
-            cmd.Parameters.Add("@brand", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@brand", System.Data.SqlDbType.NVarChar, 20);
             cmd.Parameters.Add("@state", System.Data.SqlDbType.TinyInt);
             cmd.Parameters.Add("@body_type", System.Data.SqlDbType.TinyInt);
             cmd.Parameters.Add("@fuel_type", System.Data.SqlDbType.TinyInt);
@@ -196,7 +199,7 @@ namespace Autus
 
             for (int i = 0; i < brands.Length; i++)
             {
-                cmd.Parameters.Add($"@brand{i}", System.Data.SqlDbType.VarChar, 20);
+                cmd.Parameters.Add($"@brand{i}", System.Data.SqlDbType.NVarChar, 20);
                 cmd.Parameters[$"@brand{i}"].Value = brands[i];
             }
 
@@ -224,8 +227,8 @@ namespace Autus
             string cmdTxt = "INSERT INTO users VALUES (@login, @pass)";
             SqlCommand cmd = new(cmdTxt, CONN);
 
-            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
-            cmd.Parameters.Add("@pass", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@pass", System.Data.SqlDbType.NVarChar, 20);
 
             cmd.Parameters["@login"].Value = login;
             cmd.Parameters["@pass"].Value = pass;
@@ -240,7 +243,7 @@ namespace Autus
             string cmdTxt = "SELECT COUNT(login) FROM users WHERE login = @login";
             SqlCommand cmd = new(cmdTxt, CONN);
 
-            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.NVarChar, 20);
 
             cmd.Parameters["@login"].Value = login;
 
@@ -252,8 +255,8 @@ namespace Autus
             string cmdTxt = "SELECT COUNT(login) FROM users WHERE login = @login AND pass = @password";
             SqlCommand cmd = new(cmdTxt, CONN);
 
-            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 20);
-            cmd.Parameters.Add("@password", System.Data.SqlDbType.VarChar, 20);
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.NVarChar, 20);
+            cmd.Parameters.Add("@password", System.Data.SqlDbType.NVarChar, 20);
 
             cmd.Parameters["@login"].Value = login;
             cmd.Parameters["@password"].Value = password;
@@ -457,7 +460,7 @@ namespace Autus
             OpenFileDialog ofd = new()
             {
                 Multiselect = true,
-                Filter = "Images (*.JPG)|*.JPG",
+                Filter = "Images (*.PNG)|*.PNG",
                 Title = "Wybierz zdjęcia"
             };
 

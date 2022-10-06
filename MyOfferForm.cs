@@ -10,27 +10,27 @@ using System.Windows.Forms;
 
 namespace Autus {
     public partial class MyOfferForm : Form {
-        private Global.Offer _offers;
+        private Global.Offer _offer;
         private int _offerNumber;
         public MyOfferForm(int offerNumber) {
             InitializeComponent();
             _offerNumber = offerNumber;
-            _offers = Global.GetOffers()[offerNumber];
+            _offer = Global.GetOffers()[offerNumber];
         }
         // sterowanie i ustawienie ""etykiet""
         private void MyOfferForm_Load(object sender, EventArgs e) {
-            Text = $"Autus : {_offers.Title}"; // tytuł oferty
-            //lblTitle.Text = $"Oferta użytkownika: {_offers.Author}"; // użytkownik
-            //lblPics.Text = $"Zdjęcia pojazdu: {offers.Id}"; // nazwa pojazdu
-            lblCar.Text = $"Marka: {_offers.Brand}";
-            lblFuel.Text = $"Rodzaj paliwa: {Global.Tf(_offers.FuelType)}";
-            lblMileage.Text = $"Przebieg: {_offers.Mileage}";
-            lblPrice.Text = $"Cena: {_offers.Price}";
-            lblProd.Text = $"Rok produkcji: {_offers.ProdYear}";
-            lblState.Text = $"Stan: {Global.Ts(_offers.State)}";
-            lblType.Text = $"Typ samochodu: {Global.Tb(_offers.BodyType)}";
-            lblDesc.Text = _offers.Desc;
-            pictures.ConvertToImageSlider(_offers.Id);
+            Text = $"Autus : {_offer.Title}"; // tytuł oferty
+            lblTitle.Text = _offer.Title;
+            lblAuthor.Text = $"Oferta użytkownika: {_offer.Author}"; // użytkownik
+            lblCar.Text = $"Marka: {_offer.Brand}";
+            lblFuel.Text = $"Rodzaj paliwa: {Global.Tf(_offer.FuelType)}";
+            lblMileage.Text = $"Przebieg: {_offer.Mileage}";
+            lblPrice.Text = $"Cena: {_offer.Price} zł";
+            lblProd.Text = $"Rok produkcji: {_offer.ProdYear}";
+            lblState.Text = $"Stan: {Global.Ts(_offer.State)}";
+            lblType.Text = $"Typ samochodu: {Global.Tb(_offer.BodyType)}";
+            lblDesc.Text = _offer.Desc; // opis
+            pictures.ConvertToImageSlider(_offer.Id);
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {
@@ -53,18 +53,24 @@ namespace Autus {
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            Global.RemoveOffer(_offers.Id);
+            Global.RemoveOffer(_offer.Id);
             new OfferRemovedDialog().ShowDialog();
             this.Hide();
             new MyAccountForm().ShowDialog();
             this.Close();
         }
 
-        private void btnBuy_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            //Edit zla nazwa btn )
             Hide();
             new EditOfferForm(_offerNumber).ShowDialog();
+            Close();
+        }
+
+        private void btnRet_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new MyAccountForm().ShowDialog();
             Close();
         }
     }

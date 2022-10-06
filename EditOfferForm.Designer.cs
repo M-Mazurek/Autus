@@ -128,7 +128,7 @@
             this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDesc.ForeColor = System.Drawing.Color.White;
             this.txtDesc.Location = new System.Drawing.Point(38, 216);
-            this.txtDesc.MaxLength = 80;
+            this.txtDesc.MaxLength = 256;
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.PlaceholderText = "Opis";

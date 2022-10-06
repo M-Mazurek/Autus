@@ -28,10 +28,6 @@ namespace Autus {
             txtCar.Text = offer.Brand;
             txtDesc.Text = offer.Desc;
 
-            cbState.SelectedIndex = (int)Math.Log2((double)offer.State);
-            cbFuel.SelectedIndex = (int)Math.Log2((double)offer.FuelType);
-            cbType.SelectedIndex = (int)Math.Log2((double)offer.BodyType);
-
             List<Global.EnumTextPair> stateList = new();
             foreach (var val in Enum.GetValues(typeof(STATE)))
                 stateList.Add(new Global.EnumTextPair((int)val, Global.Ts((STATE)val).ToString()!));
@@ -52,6 +48,11 @@ namespace Autus {
 
             cbFuel.DisplayMember = "Text";
             cbFuel.DataSource = fuelList;
+
+
+            cbState.SelectedIndex = (int)Math.Log2((double)offer.State);
+            cbFuel.SelectedIndex = (int)Math.Log2((double)offer.FuelType);
+            cbType.SelectedIndex = (int)Math.Log2((double)offer.BodyType);
         }
 
         private void btnOffers_Click(object sender, EventArgs e) {

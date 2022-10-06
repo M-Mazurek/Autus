@@ -19,12 +19,12 @@ namespace Autus {
         // sterowanie i ustawienie ""etykiet""
         private void OfferForm_Load(object sender, EventArgs e) {
             Text = $"Autus : {_offer.Title}"; // tytuł oferty
-            lblTitle.Text = $"Oferta użytkownika: {_offer.Author}"; // użytkownik
-            //lblPics.Text = $"Zdjęcia pojazdu: {offers[0].Id}"; // nazwa pojazdu
+            lblTitle.Text = _offer.Title;
+            lblAuthor.Text = $"Oferta użytkownika: {_offer.Author}"; // użytkownik
             lblCar.Text = $"Marka: {_offer.Brand}"; 
             lblFuel.Text = $"Rodzaj paliwa: {Global.Tf(_offer.FuelType)}"; 
             lblMileage.Text = $"Przebieg: {_offer.Mileage}"; 
-            lblPrice.Text = $"Cena: {_offer.Price}"; 
+            lblPrice.Text = $"Cena: {_offer.Price} zł"; 
             lblProd.Text = $"Rok produkcji: {_offer.ProdYear}";
             lblState.Text = $"Stan: {Global.Ts(_offer.State)}";
             lblType.Text = $"Typ samochodu: {Global.Tb(_offer.BodyType)}";
@@ -55,6 +55,13 @@ namespace Autus {
         private void btnBuy_Click(object sender, EventArgs e) {
             Global.RemoveOffer(_offer.Id);
             new OfferBoughtDialog().ShowDialog();
+            this.Hide();
+            new OffersForm().ShowDialog();
+            this.Close();
+        }
+
+        private void btnRet_Click(object sender, EventArgs e)
+        {
             this.Hide();
             new OffersForm().ShowDialog();
             this.Close();

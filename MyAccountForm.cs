@@ -17,6 +17,12 @@ namespace Autus {
         // sterowanie
         private void MyAccount_Load(object sender, EventArgs e) {
             btnAccount.Enabled = false;
+
+            offers.HorizontalScroll.Maximum = 0;
+            offers.AutoScroll = false;
+            offers.VerticalScroll.Visible = false;
+            offers.AutoScroll = true;
+
             Global.Offer[] _offers = Global.GetOffers();
             int MyOffersCount = 0;
             int OffersCount = 0;

@@ -53,6 +53,9 @@ namespace Autus {
 
         // reszta
         private void btnBuy_Click(object sender, EventArgs e) {
+            if (new BuyConfirm().ShowDialog() == DialogResult.Cancel)
+                return;
+
             Global.RemoveOffer(_offer.Id);
             new OfferBoughtDialog().ShowDialog();
             this.Hide();

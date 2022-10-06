@@ -75,7 +75,20 @@ namespace Autus {
 
         // reszta 
         private void btnConfirm_Click(object sender, EventArgs e) {
-            //update database
+            if (String.IsNullOrWhiteSpace(txtName.Text) ||
+                String.IsNullOrWhiteSpace(txtDesc.Text) ||
+                !float.TryParse(txtPrice.Text, out float pr) ||
+                !int.TryParse(txtProd.Text, out int prod) ||
+                !float.TryParse(txtMileage.Text, out float mil) ||
+                String.IsNullOrWhiteSpace(txtCar.Text))
+            {
+                new InputErrorDialog().ShowDialog();
+                return;
+            }
+
+            if (new EditConfirm().ShowDialog() == DialogResult.Cancel)
+                return;
+
             Global.EditOffer(offer.Id,
                             txtName.Text,
                             txtDesc.Text,

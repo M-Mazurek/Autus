@@ -57,6 +57,18 @@ namespace Autus {
 
         // reszta
         private void btnConfirm_Click(object sender, EventArgs e) {
+
+            if (String.IsNullOrWhiteSpace(txtName.Text) ||
+                String.IsNullOrWhiteSpace(txtDesc.Text) ||
+                !float.TryParse(txtPrice.Text, out float pr) ||
+                !int.TryParse(txtProd.Text, out int prod) ||
+                !float.TryParse(txtMileage.Text, out float mil) ||
+                String.IsNullOrWhiteSpace(txtCar.Text))
+            {
+                new InputErrorDialog().ShowDialog();
+                return;
+            }
+
             Global.AddOffer(txtName.Text,
                             txtDesc.Text,
                             float.Parse(txtPrice.Text),

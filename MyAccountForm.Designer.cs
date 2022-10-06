@@ -76,7 +76,6 @@
             // 
             // offers
             // 
-            this.offers.AutoScroll = true;
             this.offers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.offers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.offers.Location = new System.Drawing.Point(188, 176);

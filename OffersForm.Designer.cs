@@ -30,6 +30,7 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.offers = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.lbBrand = new System.Windows.Forms.ListBox();
             this.lbFuel = new System.Windows.Forms.ListBox();
             this.lbBody = new System.Windows.Forms.ListBox();
@@ -53,7 +54,6 @@
             this.priceMax = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.priceMin = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrzebiegMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrzebiegMin)).BeginInit();
@@ -120,7 +120,6 @@
             // 
             // offers
             // 
-            this.offers.AutoScroll = true;
             this.offers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.offers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.offers.Location = new System.Drawing.Point(328, 118);
@@ -161,6 +160,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(264, 601);
             this.panel1.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(3, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(254, 65);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Wyszukiwarka ofert";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbBrand
             // 
@@ -431,17 +441,6 @@
             this.priceMin.Name = "priceMin";
             this.priceMin.Size = new System.Drawing.Size(90, 23);
             this.priceMin.TabIndex = 2;
-            // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(3, 9);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(254, 65);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "Wyszukiwarka ofert";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OffersForm
             // 

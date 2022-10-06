@@ -16,7 +16,7 @@ namespace Autus {
         public EditOfferForm(int offerNumber)
         {
             InitializeComponent();
-            offer = Global.GetOffers()[offerNumber];
+            offer = Global.GetOfferByID(offerNumber);
         }
 
         // sterowanie i ustawienie ""pól tekstowych""

@@ -54,7 +54,7 @@ namespace Autus {
         {
             Hide();
             //new MyOfferForm(((MyOfferPanel)sender!).OfferNumber).ShowDialog();
-            new MyOfferForm((((Control)sender!).Parent as MyOfferPanel)!.OfferNumber).ShowDialog();
+            new MyOfferForm((((Control)sender!).Parent as MyOfferPanel)!.OfferID).ShowDialog();
             Close();
         }
 

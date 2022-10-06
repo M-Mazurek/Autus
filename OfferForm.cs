@@ -13,7 +13,7 @@ namespace Autus {
         private Global.Offer _offer;
         public OfferForm(int offerNumber) {
             InitializeComponent();
-            _offer = Global.GetOffers()[offerNumber];
+            _offer = Global.GetOfferByID(offerNumber);
         }
 
         // sterowanie i ustawienie ""etykiet""

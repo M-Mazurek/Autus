@@ -158,6 +158,35 @@ namespace Autus
             return GetOffers(GetDefaultPriceRange(), GetDefaultProdYearRange(), GetDefaultMileageRange(), GetBrands(), GetDefaultStateFilter(), GetDefaultBodyTypeFilter(), GetDefaultFuelTypeFilter());
         }
 
+        public static Offer GetOfferByID(int id)
+        {
+            string cmdTxt = "SELECT * FROM offers WHERE id = @id";
+
+            SqlCommand cmd = new(cmdTxt, CONN);
+
+            cmd.Parameters.Add("@id", System.Data.SqlDbType.Int);
+
+            cmd.Parameters["@id"].Value = id;
+
+            var reader = cmd.ExecuteReader();
+
+            reader.Read();
+
+            Offer res = new(Convert.ToInt32(reader["id"]),
+                                    reader["author"].ToString()!,
+                                    reader["title"].ToString()!,
+                                    reader["desc"].ToString()!,
+                                    (float)Convert.ToDouble(reader["price"]),
+                                    Convert.ToInt32(reader["prod_year"]),
+                                    (float)Convert.ToDouble(reader["mileage"]),
+                                    reader["brand"].ToString()!,
+                                    (STATE)Convert.ToInt64(reader["state"]),
+                                    (BODY_TYPE)Convert.ToInt64(reader["body_type"]),
+                                    (FUEL_TYPE)Convert.ToInt64(reader["fuel_type"]));
+            reader.Close();
+            return res;
+        }
+
         public static Offer[] GetOffers((float, float) price, (int, int) prodYear, (float, float) mileage, string[] brands, int state, int bodyType, int fuelType)
         {
             List<Offer> offers = new();
